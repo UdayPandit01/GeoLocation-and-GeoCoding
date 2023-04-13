@@ -10,6 +10,7 @@ const GeoLoacation = () => {
   const [location, setLocation] = useState(false);
   const [address, setAddress] = useState('');
 
+
     // Function to get permission for location
 const requestLocationPermission = async () => {
     try {
@@ -60,6 +61,8 @@ const requestLocationPermission = async () => {
     console.log(location);
   };
   
+
+  // function to get the address using latitude and longitude
   const getAddress = () => {
     const result = requestLocationPermission();
     result.then(res => {
@@ -71,7 +74,8 @@ const requestLocationPermission = async () => {
         // };
         // Geocoder.geocodePosition(NY).then(res => {
         Geocoder.geocodePosition({lat: location.coords.latitude, lng: location.coords.longitude}).then(res => {
-          // res is an Array of geocoding object (see below)
+
+          // res is an Array of geocoding object
           console.log(res)
           setAddress(res)
       })
@@ -111,34 +115,32 @@ const requestLocationPermission = async () => {
 };
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 0.5,
-    // backgroundColor: '#fff',
-    backgroundColor: '#F1F6F9',
+    backgroundColor: '#EEEEEE',
     alignItems: 'center',
-    marginTop:0,
-    // fontWeight:'900',
-    // justifyContent: 'center',
+    marginTop:1,
+   
   },
 
   containerText:{
+    color:"#000000",
     fontWeight:"900",
     fontSize:20,
   },
 
   buttonContainer:{
     marginTop:10,
-    // borderColor:'red',
     borderWidth:0,
     borderRadius:5,
     padding:12,
     backgroundColor:"#03C988",
-    // marginHorizontal:10,
-    // borderTopRightRadius:20,
-    // borderBottomLeftRadius:20,
+    
    },
 
    buttonText:{
+    color:"#000000",
     fontSize:15,
     textAlign:"center",
     fontWeight:'700',
@@ -146,4 +148,5 @@ const styles = StyleSheet.create({
 
 
 });
+
 export default GeoLoacation;
